@@ -5,7 +5,18 @@ defmodule Helloplug do
   end
 
   def call(conn, _opts) do
-    IO.puts "saying hello!"
-    Plug.Conn.send_resp(conn, 200, "Hello, world!")
+    route(conn.method, conn.path_info, conn)
+  end
+
+  def route("GET", ["hello"], conn) do
+    conn |> Plug.Conn.send_resp(200, "Hello, world!")
+  end
+
+  def route("GET", ["users", user_id], conn) do
+    conn |> Plug.Conn.send_resp(200, "You requested user #{user_id}")
+  end
+
+  def route(_method, _path, conn) do
+    conn |> Plug.Conn.send_resp(404, "Couldn't find that page, sorry!")
   end
 end
