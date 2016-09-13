@@ -1,16 +1,5 @@
 defmodule Helloplug do
-  def init(default_opts) do
-    IO.puts "starting up Helloplug..."
-    default_opts
-  end
-
-  def call(conn, _opts) do
-    route(conn.method, conn.path_info, conn)
-  end
-
-  def route("GET", ["hello"], conn) do
-    conn |> Plug.Conn.send_resp(200, "Hello, world!")
-  end
+  use Router
 
   def route("GET", ["users", user_id], conn) do
     conn |> Plug.Conn.send_resp(200, "You requested user #{user_id}")
