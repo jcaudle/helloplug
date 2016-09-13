@@ -1,6 +1,6 @@
 # Helloplug
 
-**TODO: Add description**
+This is from working through _[Building a web framework from scratch in Elixir](https://codewords.recurse.com/issues/five/building-a-web-framework-from-scratch-in-elixir)_
 
 ## Installation
 
